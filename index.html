@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>CONTESTS</title>
+	<style>
+		*{border:0;padding:0;margin:0;}
+		body{background: white; font-family:sans-serif,Arial Black,Comic Sans MS,cursive,verdana; text-align: center;}
+		h1{color: black;}
+		.contC{background:white;}
+		.meWinnerD{display:inline-block;vertical-align:top;}
+		/*.blqsC{background:red;display:inline-block;vertical-align:top;}*/
+		a{ color: gray; padding: 14px 25px; text-align: center; text-decoration: none; display: inline-block;}
+	</style>
+</head>
+<body>
+	<div class="contC">
+		<br>
+		<h1>3D to 2D</h1>
+		<br/>
+		<div id="blqsD" class="blqsC"></div>
+	</div>
+	<script>
+		bloques = document.getElementById('blqsD');
+		anchoPant = window.innerWidth/2;
+
+		meWinner = ['',''];
+
+		imagenes = [
+			['img/000.png','img/001.png','https://www.freelancer.com/u/AdrianniBotina'],
+			['img/002.png','img/003.png','https://www.freelancer.com/u/AdrianniBotina'],
+			['img/004.png','img/005.png','https://www.freelancer.com/u/AdrianniBotina'],
+			['img/006.png','img/007.png','https://www.freelancer.com/u/AdrianniBotina'],
+			['img/008.png','img/009.png','https://www.freelancer.com/u/AdrianniBotina'],
+			['img/010.jpg','img/011.jpg','https://www.freelancer.com/u/AdrianniBotina'],
+			['img/012.png','img/013.jpg','https://www.freelancer.com/u/AdrianniBotina'],
+			['img/014.png','img/015.png','https://www.freelancer.com/u/AdrianniBotina'],
+			['img/016.png','img/017.png','https://www.freelancer.com/u/AdrianniBotina'],
+			['img/018.png','img/019.png','https://www.freelancer.com/u/AdrianniBotina'],
+			['img/020.png','img/021.png','https://www.freelancer.com/u/AdrianniBotina'],
+			['img/022.png','img/023.png','https://www.freelancer.com/u/AdrianniBotina'],
+		];
+		///////////////////////////////////////////////////////////////
+		///////////////////////////////////////////////////////////////
+		for (i = 0; i < imagenes.length; i++) {
+			for (k = 0; k < meWinner.length; k++){
+				if(window.innerWidth < window.innerHeight){
+					insertTitle1 = document.createElement('h6');
+				}else{
+					insertTitle1 = document.createElement('h2');
+				}
+					inserTxt = document.createTextNode(meWinner[k]);
+				insertTitle1.className = 'meWinnerD';
+				insertTitle1.style.width = (anchoPant-80)+'px';
+				insertTitle1.style.color = 'yellow';
+
+				insertTitle1.appendChild(inserTxt);
+				bloques.appendChild(insertTitle1);
+			}
+			//CREAR BLOQUE
+			insertblq = document.createElement('div');
+				//insertblq.style.background = 'red';
+				//insertblq.style.border = 'thin solid black';
+				insertblq.style.width = window.innerWidth+'px';
+				//IMAGENES
+				for (j = 0; j < (imagenes[i].length-1); j++){
+					//IMAGEN
+					insertImg = document.createElement('img');
+						insertImg.src = imagenes[i][j];
+						insertImg.style.width = (anchoPant-50)+'px';
+						switch(j){
+							case 0:
+								insertImg.style.paddingLeft = 0;
+								insertImg.style.paddingRight = 1+'em';
+							break;
+							case 1:
+								insertImg.style.paddingLeft = 1+'em';
+								insertImg.style.paddingRight = '0';
+							break;
+						}
+					//INSERT
+					insertblq.appendChild(insertImg);
+					//SEPARACION
+					separacion = document.createElement('br');
+					bloques.appendChild(separacion);
+				}
+				//TEXTO LOSER WINNER
+				insertLink = document.createElement('a');
+				if(window.innerWidth < window.innerHeight){
+					insertLink.style.fontSize = '8px';
+				}else{
+					insertLink.style.fontSize = '16px';
+				}
+				insertLink.href = imagenes[i][2];
+					inserTxt = document.createTextNode('Link: '+imagenes[i][2]);
+				insertLink.appendChild(inserTxt);
+				bloques.appendChild(insertLink);
+			//INSERT
+			bloques.appendChild(insertblq);
+		}
+
+	</script>
+</body>
+</html>
